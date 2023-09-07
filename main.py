@@ -7,7 +7,7 @@ import math
 import time
 
 
-def main() -> None:
+def main():
     # Initialising pygame
     pygame.init()
     screen = pygame.display.set_mode((__global_data__.GAME["BOUNDS"][0], __global_data__.GAME["BOUNDS"][1]))
