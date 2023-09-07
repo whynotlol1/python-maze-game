@@ -15,6 +15,9 @@ def main():
     clock = pygame.time.Clock()
     # Generating the map
     game_surface = map_generation.generate(width=__global_data__.GAME["BOUNDS"][1], height=__global_data__.GAME["BOUNDS"][0], iterations=1)
+    # Drawing the 2 remaining borders (as the originally generated borders are out of reach for the rendering algorithm)
+    # TODO
+
     # Generating entrance and exit points
     # Entrance
     game_surface[0][0] = 2
@@ -42,11 +45,11 @@ def main():
                 if DISTANCE <= (
                         __global_data__.PLAYER["VIEW"]["FACTOR"] * __global_data__.PLAYER["VIEW"]["STRENGTH_FACTOR"]):
                     match game_surface[x_pos][y_pos]:
-                        case 0:  # floor
+                        case 0:  # Floor
                             pygame.draw.rect(screen, __global_data__.COLORS["BLACK"], (x_pos, y_pos, x_pos + __global_data__.GAME["UNIT_SIZE"], y_pos + __global_data__.GAME["UNIT_SIZE"]))
-                        case 1:  # wall
+                        case 1:  # Wall
                             pygame.draw.rect(screen, __global_data__.COLORS["WHITE"], (x_pos, y_pos, x_pos + __global_data__.GAME["UNIT_SIZE"], y_pos + __global_data__.GAME["UNIT_SIZE"]))
-                        case 2:  # entrance or exit
+                        case 2:  # Entrance or exit
                             pygame.draw.rect(screen, __global_data__.COLORS["YELLOW"], (x_pos, y_pos, x_pos + __global_data__.GAME["UNIT_SIZE"], y_pos + __global_data__.GAME["UNIT_SIZE"]))
 
         # Rendering the player
