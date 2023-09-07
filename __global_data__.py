@@ -1,10 +1,10 @@
 # Feel free to use some parts of this code in your project
 
 GAME = {
-    "BOUNDS": [700, 700],
-    "UNIT_SIZE": 10,
+    "BOUNDS": 700,
+    "UNIT_SIZE": 20,
     "FPS_STANDART": 60,
-    "VERSION": "#0.0.2 beta",
+    "VERSION": "#0.0.3 beta",
     "IS_RUNNING": True
 }
 
@@ -12,11 +12,6 @@ PLAYER = {
     "POSITION": {
         "X": 10,
         "Y": 10
-    },
-    "VIEW": {
-        "FACTOR": 0.4,
-        "STRENGTH_FACTOR": 200,
-        "FIELD": 90  # Not used yet, will be implemented later
     },
     "SPEED": 1
 }
