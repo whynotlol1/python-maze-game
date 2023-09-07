@@ -139,11 +139,13 @@ def main():
         elif KEYS[pygame.K_ESCAPE]:  # Quitting if [ESC] is pressed
             pygame.quit()
             __global_data__.GAME["IS_RUNNING"] = False
-
-        for event in pygame.event.get():  # Quitting if X is pressed
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                __global_data__.GAME["IS_RUNNING"] = False
+        try:
+            for event in pygame.event.get():  # Quitting if X is pressed
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    __global_data__.GAME["IS_RUNNING"] = False
+        except pygame.error:
+            pass
 
 
 if __name__ == "__main__":
