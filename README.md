@@ -6,7 +6,7 @@ This is a simple maze game made with python. You are playing as a red character 
 
 ## Changelog
 ### #0.0.2 beta
-- Game "released". Still has many bugs
+- Game "released". Still has many bugs [UNPLAYABLE!]
 
 ## Credits:
 [@xsafter](https://github.com/xsafter) - Creating the [map generator algorithm](https://github.com/xsafter/map-generator) used in this game
