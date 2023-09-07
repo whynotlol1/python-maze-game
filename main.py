@@ -3,9 +3,6 @@
 import __global_data__
 import map_generation
 import pygame
-import math
-import time
-
 
 def main():
     # Initialising pygame
