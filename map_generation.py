@@ -70,7 +70,6 @@ def flood_find_empty(grid, tries, goal):
     return new_grid
 
 
-
 def generate(width: int, height: int, iterations: int):
 
     chance = 40
