@@ -1,5 +1,5 @@
-# all the code here was taken from https://github.com/xsafter/map-generator/tree/main
-# feel free to use some parts of this code in your project
+# All the code here was taken from https://github.com/xsafter/map-generator/tree/main
+# Feel free to use some parts of this code in your project
 
 from collections import deque
 import random
@@ -15,9 +15,9 @@ def make_grid(width, height):
 
 
 def populate_grid(grid, chance):
-    for i in range(len(grid)):  # reminder to test with: for index, value in enumerate(grid)
+    for i in range(len(grid)):
         for j in range(len(grid[0])):
-            if random.randint(0, 100) <= chance:  # test with list comprehension instead??
+            if random.randint(0, 100) <= chance: 
                 grid[i][j] = 1
     return grid
 
@@ -60,9 +60,9 @@ def flood_find_empty(grid, tries, goal):
             new_grid[current[0]][current[1]] = 0
             for k in range(-1, 2):
                 for l in range(-1, 2):
-                    if 0 <= current[0] + k < len(grid) and 0 <= current[1] + l < len(grid[0]):  # if we're not out of bounds
-                        if copy_grid[current[0] + k][current[1] + l] == 0:  # if it's an empty space
-                            copy_grid[current[0] + k][current[1] + l] = 2  # mark visited
+                    if 0 <= current[0] + k < len(grid) and 0 <= current[1] + l < len(grid[0]):  # If we're not out of bounds
+                        if copy_grid[current[0] + k][current[1] + l] == 0:  # If it's an empty space
+                            copy_grid[current[0] + k][current[1] + l] = 2  # Mark visited
                             open_count += 1
                             unvisited.append([current[0] + k, current[1] + l])
         percentage = open_count * 100 / (len(grid) * len(grid[0]))
@@ -76,7 +76,7 @@ def generate(width: int, height: int, iterations: int):
     chance = 40
     count = 5
     floodTries = 5
-    goalPercentage = 30  # above 30% seems to be a good target
+    goalPercentage = 30  # Above 30% seems to be a good target
 
     grid = make_grid(width, height)
 
