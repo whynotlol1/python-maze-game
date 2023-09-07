@@ -97,7 +97,9 @@ def main():
             new_y = __global_data__.PLAYER["POSITION"]["Y"] - __global_data__.PLAYER["SPEED"]
             if not collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="wall"):
                 if collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="exit"):
+                    print("=" * 100)
                     print("You've successfully beaten the maze. A proper congratulation will be added soon.")
+                    print("=" * 100)
                     pygame.quit()
                     __global_data__.GAME["IS_RUNNING"] = False
                 else:
@@ -108,7 +110,9 @@ def main():
             new_y = __global_data__.PLAYER["POSITION"]["Y"] + __global_data__.PLAYER["SPEED"]
             if not collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="wall"):
                 if collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="exit"):
+                    print("=" * 100)
                     print("You've successfully beaten the maze. A proper congratulation will be added soon.")
+                    print("=" * 100)
                     pygame.quit()
                     __global_data__.GAME["IS_RUNNING"] = False
                 else:
@@ -119,7 +123,9 @@ def main():
             new_y = __global_data__.PLAYER["POSITION"]["Y"]
             if not collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="wall"):
                 if collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="exit"):
+                    print("=" * 100)
                     print("You've successfully beaten the maze. A proper congratulation will be added soon.")
+                    print("=" * 100)
                     pygame.quit()
                     __global_data__.GAME["IS_RUNNING"] = False
                 else:
@@ -130,7 +136,9 @@ def main():
             new_y = __global_data__.PLAYER["POSITION"]["Y"]
             if not collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="wall"):
                 if collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="exit"):
+                    print("=" * 100)
                     print("You've successfully beaten the maze. A proper congratulation will be added soon.")
+                    print("=" * 100)
                     pygame.quit()
                     __global_data__.GAME["IS_RUNNING"] = False
                 else:
