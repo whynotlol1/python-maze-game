@@ -1,4 +1,4 @@
-# feel free to use some parts of this code in your project
+# Feel free to use some parts of this code in your project
 
 GAME = {
     "BOUNDS": [700, 700],
@@ -16,7 +16,7 @@ PLAYER = {
     "VIEW": {
         "FACTOR": 0.4,
         "STRENGTH_FACTOR": 200,
-        "FIELD": 90  # not used yet, will be implemented later
+        "FIELD": 90  # Not used yet, will be implemented later
     },
     "SPEED": 1
 }
