@@ -17,7 +17,6 @@ def main():
     game_surface = map_generation.generate(width=__global_data__.GAME["BOUNDS"][1], height=__global_data__.GAME["BOUNDS"][0], iterations=1)
     # Drawing the 2 remaining borders (as the originally generated borders are out of reach for the rendering algorithm)
     # TODO
-
     # Generating entrance and exit points
     # Entrance
     game_surface[0][0] = 2
