@@ -152,7 +152,7 @@ def main():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     __global_data__.GAME["IS_RUNNING"] = False
-        except pygame.error:  # Basically doesn't print out an error after you win 
+        except pygame.error:  # Basically not printing out an error after you win 
             pass
 
 
