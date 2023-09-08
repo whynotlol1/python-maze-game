@@ -1,5 +1,6 @@
 # python-maze-game
 ## ======== DEVELOPMENT PROCESS IS STOPPED FOR NOW ========
+- !INFORMAL MESSAGE! Been working on that shit 3 days straight. Around 100 contributions, wow. Hope somebody finds that interesting / useful
 
 ## Descryption
 This is a simple maze game made with python. You are playing as a red character in a black and white maze. Your task is to find the exit.
@@ -50,7 +51,6 @@ This is a simple maze game made with python. You are playing as a red character 
 - Player speed is now tied up to the unit size. That's a temporary measure made for the collision handler to work (message from #0.0.4 beta changelog)
 - FOV and/or view radius though are going to be added soon:tm: (removed in #0.0.3 beta, message from #0.0.4.1 beta changelog)
 - Buttons are a bit bugged and will be reworked soon:tm: (message from #0.0.5 beta changelog)
-- !INFORMAL MESSAGE! Been working on that shit 3 days straight. Around 100 contributions, wow. Hope somebody finds that interesting / useful
 
 ## Credits:
 - [@xsafter](https://github.com/xsafter) - Creating the [map generator algorithm](https://github.com/xsafter/map-generator) used in this game
