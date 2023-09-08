@@ -33,6 +33,15 @@ This is a simple maze game made with python. You are playing as a red character 
 - Minor code maintenance
 ### #0.0.4.3 beta
 - Minor code maintenance
+### #0.0.5 beta
+- Added main menu
+- Added Quit and Play buttons to main menu
+- Added cursor rendering for main menu
+- **!IMPORTANT! Buttons are a bit bugged and will be reworked soon:tm:**
+
+## Features to be added:
+- Main menu buttons will be debugged soon:tm:
+- FOV or view radius will be added back soon:tm: (removed in #0.0.3 beta)
 
 ## Credits:
 - [@xsafter](https://github.com/xsafter) - Creating the [map generator algorithm](https://github.com/xsafter/map-generator) used in this game
