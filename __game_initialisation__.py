@@ -17,11 +17,19 @@ buttons = {
     "QUIT": {
         "TEXT": "Quit",
         "ACTION_CODE": "QUIT",
-        "POSITION": [__global_data__.GAME["BOUNDS"] / 6, 300]
+        "POSITION": [__global_data__.GAME["BOUNDS"] / 6, 300],
+        "IS_RENDERED_ON": ["MAIN-MENU", "CONGRATULATION"]
     },
     "PLAY": {
         "TEXT": "Play",
         "ACTION_CODE": "PLAY",
-        "POSITION": [(__global_data__.GAME["BOUNDS"] / 6) * 4, 300]
+        "POSITION": [(__global_data__.GAME["BOUNDS"] / 6) * 4, 300],
+        "IS_RENDERED_ON": ["MAIN-MENU"]
+    },
+    "NEW_MAZE": {
+        "TEXT": "Try again",
+        "ACTION_CODE": "RETRY",
+        "POSITION": [(__global_data__.GAME["BOUNDS"] / 6) * 4, 300],
+        "IS_RENDERED_ON": ["CONGRATULATION"]
     }
 }
