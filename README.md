@@ -35,7 +35,7 @@ This is a simple maze game made with python. You are playing as a red character 
 - Minor code maintenance
 ### #0.0.5 beta
 - Added main menu
-- Added Quit and Play buttons to main menu
+- Added "Quit" and "Play" buttons to main menu
 - Added cursor rendering for main menu
 - **!IMPORTANT! Buttons are a bit bugged and will be reworked soon:tm:**
 
