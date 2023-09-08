@@ -1,8 +1,8 @@
 # Feel free to use some parts of this code in your project
 
-from map_generation import game_surface
 from __game_initialisation__ import *
 import __global_data__
+import map_generation
 import pygame
 
 
@@ -24,8 +24,20 @@ def collision_handler(game_map: list[list[int]], x_pos: int, y_pos: int, checkin
     return "CollisionHandlerException: Unknown error occurred"
 
 
+game_surface = map_generation.generate_level()
+
+
 def main():
+    global game_surface
     saved_game_speed = __global_data__.GAME["GAME_SPEED"]
+
+    def restart():
+        global game_surface
+        game_surface = map_generation.generate_level()
+        __global_data__.PLAYER["POSITION"][0] = __global_data__.GAME["UNIT_SIZE"]
+        __global_data__.PLAYER["POSITION"][1] = __global_data__.GAME["UNIT_SIZE"]
+        __global_data__.GAME["LEVEL"] = "LEVEL-1"
+
     while __global_data__.GAME["IS_RUNNING"]:
         clock.tick(__global_data__.GAME["GAME_SPEED"])
         # Rendering
@@ -46,10 +58,11 @@ def main():
                 pygame.draw.rect(screen, __global_data__.COLORS["WHITE"], (buttons["QUIT"]["POSITION"][0], buttons["QUIT"]["POSITION"][1], (buttons["QUIT"]["POSITION"][0] + button_width) / 2.5, (buttons["QUIT"]["POSITION"][1] + button_height) / 6), 1)
                 pygame.draw.rect(screen, __global_data__.COLORS["WHITE"], (buttons["PLAY"]["POSITION"][0], buttons["PLAY"]["POSITION"][1], (buttons["PLAY"]["POSITION"][0] + button_width) / 6.5, (buttons["PLAY"]["POSITION"][1] + button_height) / 6), 1)
                 for button in buttons:
-                    text = my_font.render(buttons[button]["TEXT"], False, __global_data__.COLORS["WHITE"])
-                    x_pos = buttons[button]["POSITION"][0] + 5
-                    y_pos = buttons[button]["POSITION"][1] + 5
-                    screen.blit(text, (x_pos, y_pos))
+                    if __global_data__.GAME["LEVEL"] in buttons[button]["IS_RENDERED_ON"]:
+                        text = my_font.render(buttons[button]["TEXT"], False, __global_data__.COLORS["WHITE"])
+                        x_pos = buttons[button]["POSITION"][0] + 5
+                        y_pos = buttons[button]["POSITION"][1] + 5
+                        screen.blit(text, (x_pos, y_pos))
 
             case "LEVEL-1":
                 __global_data__.GAME["GAME_SPEED"] = saved_game_speed
@@ -113,8 +126,20 @@ def main():
                 screen.fill(__global_data__.COLORS["BLACK"])
                 text = my_font.render("Congratulations on beating the maze!", False, __global_data__.COLORS["WHITE"])
                 x_pos = __global_data__.GAME["BOUNDS"] / 16
-                y_pos = ((__global_data__.GAME["BOUNDS"] / __global_data__.GAME["UNIT_SIZE"]) / 2) * __global_data__.GAME["UNIT_SIZE"]
+                y_pos = ((__global_data__.GAME["BOUNDS"] / __global_data__.GAME["UNIT_SIZE"]) / 4) * __global_data__.GAME["UNIT_SIZE"]
                 screen.blit(text, (x_pos, y_pos))
+                # Rendering the cursor
+                mouse = pygame.mouse.get_pos()
+                pygame.draw.circle(screen, __global_data__.COLORS["RED"], (mouse[0] + __global_data__.GAME["UNIT_SIZE"] / 2, mouse[1] + __global_data__.GAME["UNIT_SIZE"] / 2), __global_data__.GAME["UNIT_SIZE"] / 3)
+                # Rendering the buttons
+                pygame.draw.rect(screen, __global_data__.COLORS["WHITE"], (buttons["QUIT"]["POSITION"][0], buttons["QUIT"]["POSITION"][1], (buttons["QUIT"]["POSITION"][0] + button_width) / 2.5, (buttons["QUIT"]["POSITION"][1] + button_height) / 6), 1)
+                pygame.draw.rect(screen, __global_data__.COLORS["WHITE"], (buttons["NEW_MAZE"]["POSITION"][0], buttons["PLAY"]["POSITION"][1], (buttons["NEW_MAZE"]["POSITION"][0] + button_width) / 3.5, (buttons["NEW_MAZE"]["POSITION"][1] + button_height) / 6), 1)
+                for button in buttons:
+                    if __global_data__.GAME["LEVEL"] in buttons[button]["IS_RENDERED_ON"]:
+                        text = my_font.render(buttons[button]["TEXT"], False, __global_data__.COLORS["WHITE"])
+                        x_pos = buttons[button]["POSITION"][0] + 5
+                        y_pos = buttons[button]["POSITION"][1] + 5
+                        screen.blit(text, (x_pos, y_pos))
 
         try:
             for event in pygame.event.get():
@@ -123,7 +148,7 @@ def main():
                     __global_data__.GAME["IS_RUNNING"] = False
                 # Buttons
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if __global_data__.GAME["LEVEL"] == "MAIN-MENU":
+                    if __global_data__.GAME["LEVEL"] in ["MAIN-MENU", "CONGRATULATION"]:
                         for button in buttons:
                             mouse = pygame.mouse.get_pos()
                             if buttons[button]["POSITION"][0] <= mouse[0] <= buttons[button]["POSITION"][0] + button_width and buttons[button]["POSITION"][1] <= mouse[1] <= buttons[button]["POSITION"][1] + button_height:
@@ -131,11 +156,15 @@ def main():
                                     case "QUIT":
                                         pygame.quit()
                                     case "PLAY":
-                                        __global_data__.GAME["LEVEL"] = "LEVEL-1"
+                                        restart()
+                                    case "NEW_MAZE":
+                                        restart()
 
             if pygame.key.get_pressed()[pygame.K_ESCAPE]:  # Quitting if [ESC] is pressed
                 pygame.quit()
                 __global_data__.GAME["IS_RUNNING"] = False
+            elif pygame.key.get_pressed()[pygame.K_EQUALS]:  # If you are trapped
+                __global_data__.GAME["LEVEL"] = "MAIN-MENU"
 
             # Screen updates
             pygame.display.update()
