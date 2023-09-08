@@ -29,6 +29,8 @@ This is a simple maze game made with python. You are playing as a red character 
 - !NERD WARNING! `__global_data__.GAME["BOUNDS"]` will never be a list[int] again. The FOV and/or view radius though are going to be added soon:tm:
 - Added a proper congratulation for beating the maze
 - Commented the `__global_data__` file as it's used as game configuration file. You can now change some variables here
+### #0.0.4.2 beta
+- Minor code maintenance
 
 ## Credits:
 - [@xsafter](https://github.com/xsafter) - Creating the [map generator algorithm](https://github.com/xsafter/map-generator) used in this game
