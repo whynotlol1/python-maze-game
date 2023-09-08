@@ -42,6 +42,7 @@ This is a simple maze game made with python. You are playing as a red character 
 - Added a "Try again" button to the congratulation screen
 - !NERD WARNING! Added an IS_RENDERED_ON parameter for buttons
 - Made it so if you are trapped, you can just press [+] to get back to main menu
+- Please, do not change anything in the files (including `__global_data__` and `__game_initialisation__`)
 
 ## Features to be added:
 - Buttons are a bit bugged and will be reworked soon:tm: (message from #0.0.5 beta changelog)
