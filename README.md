@@ -1,6 +1,6 @@
 # python-maze-game
 ## ======== DEVELOPMENT PROCESS IS STOPPED FOR NOW ========
-!INFORMAL MESSAGE! Been working on that shit 3 days straight. Around 100 contributions, wow. Hope somebody finds that interesting / useful !INFORMAL MESSAGE!
+*!INFORMAL MESSAGE!* Been working on that shit 3 days straight. Around 100 contributions, wow. Hope somebody finds that interesting / useful *!INFORMAL MESSAGE!*
 
 ## Descryption
 This is a simple maze game made with python. You are playing as a red character in a black and white maze. Your task is to find the exit.
