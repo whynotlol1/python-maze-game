@@ -1,6 +1,6 @@
 # python-maze-game
 ## ======== DEVELOPMENT PROCESS IS STOPPED FOR NOW ========
-*!INFORMAL MESSAGE!* Been working on that shit 3 days straight. Around 100 contributions, wow. Hope somebody finds that interesting / useful *!INFORMAL MESSAGE!*
+*!INFORMAL MESSAGE!* **Been working on that shit 3 days straight. Around 100 contributions, wow. Hope somebody finds that interesting / useful** *!INFORMAL MESSAGE!*
 
 ## Descryption
 This is a simple maze game made with python. You are playing as a red character in a black and white maze. Your task is to find the exit.
@@ -16,7 +16,7 @@ This is a simple maze game made with python. You are playing as a red character 
 - Game is still unplayable :3
 - Minor code maintenance
 - Removed everything related to player's view radius / field of view [FOV]. It will be added back later
-- !NERD WARNING! Changed `__global_data__.GAME["BOUNDS"]` from list[int] to int type, now you cannot set different height and width for the game
+- *!NERD WARNING!* Changed `__global_data__.GAME["BOUNDS"]` from list[int] to int type, now you cannot set different height and width for the game
 ### #0.0.4 beta ~~(code will be updated a bit later than the changelog)~~ REVERTED
 ### #0.0.4 beta
 - Made the player rendering position more accurate to the actual position
@@ -29,7 +29,7 @@ This is a simple maze game made with python. You are playing as a red character 
 - Player speed is now tied up to the unit size. That's a temporary measure made for the collision handler to work
 ### #0.0.4.1 beta
 - Minor code maintenance
-- !NERD WARNING! `__global_data__.GAME["BOUNDS"]` will never be a list[int] again. FOV and/or view radius though are going to be added soon:tm:
+- *!NERD WARNING!* `__global_data__.GAME["BOUNDS"]` will never be a list[int] again. FOV and/or view radius though are going to be added soon:tm:
 - Added a proper congratulation for beating the maze
 - Commented the `__global_data__` file as it's used as game configuration file. You can now change some variables here
 ### #0.0.4.2 beta
@@ -43,7 +43,7 @@ This is a simple maze game made with python. You are playing as a red character 
 - **!IMPORTANT! Buttons are a bit bugged and will be reworked soon:tm:**
 ### #0.0.5.1 beta
 - Added a "Try again" button to the congratulation screen (doesn't work properly yet, will be fixed in #0.0.5.1 beta)
-- !NERD WARNING! Added an IS_RENDERED_ON parameter for buttons
+- *!NERD WARNING!* Added an IS_RENDERED_ON parameter for buttons
 - Made it so if you are trapped, you can just press [+] to get back to main menu
 - Please, do not change anything in the files (including `__global_data__` and `__game_initialisation__`)
 
