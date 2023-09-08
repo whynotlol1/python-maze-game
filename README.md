@@ -24,6 +24,8 @@ This is a simple maze game made with python. You are playing as a red character 
 - So the game is finally playable!
 - Added a congratulation text when the maze is beaten
 - Player speed is now tied up to the unit size. That's a temporary measure made for the collision handler to work
+### #0.0.4.1 beta
+- !NERD WARNING! `__global_data__.GAME["BOUNDS"]`` will never be a list[int] again. The FOV and/or view radius though are going to be added the next update (#0.0.5 beta)
 
 ## Credits:
 - [@xsafter](https://github.com/xsafter) - Creating the [map generator algorithm](https://github.com/xsafter/map-generator) used in this game
