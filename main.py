@@ -38,7 +38,7 @@ def main():
                 __global_data__.GAME["GAME_SPEED"] = 120
                 # Rendering the cursor
                 mouse = pygame.mouse.get_pos()
-                pygame.draw.circle(screen, __global_data__.COLORS["RED"], (mouse[0] + __global_data__.GAME["UNIT_SIZE"] / 2, mouse[1] + __global_data__.GAME["UNIT_SIZE"] / 2), int(__global_data__.GAME["UNIT_SIZE"] / 3))
+                pygame.draw.circle(screen, __global_data__.COLORS["RED"], (mouse[0] + __global_data__.GAME["UNIT_SIZE"] / 2, mouse[1] + __global_data__.GAME["UNIT_SIZE"] / 2), __global_data__.GAME["UNIT_SIZE"] / 3)
                 # Rendering the buttons
                 text = my_font.render(f"Welcome to {name}", False, __global_data__.COLORS["WHITE"])
                 screen.blit(text, (__global_data__.GAME["BOUNDS"] / 14, 100))
