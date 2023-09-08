@@ -7,9 +7,9 @@ GAME = {
     "BOUNDS": 700,  # Keep an integer number
     "UNIT_SIZE": 20,  # Keep an integer number less than BOUNDS
     "GAME_SPEED": 20,  # Keep an integer number
-    "VERSION": "#0.0.4.3 beta",  # Do not change
+    "VERSION": "#0.0.5 beta",  # Do not change
     "IS_RUNNING": True,  # Do not change
-    "LEVEL": "MAIN-MENU"  # Not used yet. Is needed for the #0.0.5 beta update # Do not change
+    "LEVEL": "MAIN-MENU"  # Do not change
 }
 
 PLAYER = {
@@ -17,8 +17,7 @@ PLAYER = {
         "X": GAME["UNIT_SIZE"],  # Do not change
         "Y": GAME["UNIT_SIZE"]  # Do not change
     },  # Starting position. Starting in the middle of the entrance area
-    "SPEED": GAME["UNIT_SIZE"],  # Temporary measure for the collision handler to work  # Do not change
-    "IS_RENDERED": True  # Do not change
+    "SPEED": GAME["UNIT_SIZE"]  # Temporary measure for the collision handler to work  # Do not change
 }
 
 COLORS = {
