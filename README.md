@@ -38,6 +38,10 @@ This is a simple maze game made with python. You are playing as a red character 
 - Added "Quit" and "Play" buttons to main menu
 - Added cursor rendering for main menu
 - **!IMPORTANT! Buttons are a bit bugged and will be reworked soon:tm:**
+### #0.0.5.1 beta
+- Added a "Try again" button after you complete the first maze
+- !NERD WARNING! Added an IS_RENDERED_ON parameter for buttons
+- Made it so if you are trapped, you can just press [+] to get back to main menu
 
 ## Features to be added:
 - Main menu buttons will be debugged soon:tm:
