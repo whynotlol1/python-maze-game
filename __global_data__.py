@@ -1,6 +1,6 @@
 # Feel free to use some parts of this code in your project
 
-# This is basically a configuration file. 
+# This is basically a configuration file.
 # You can change some values here
 
 GAME = {
@@ -16,7 +16,8 @@ PLAYER = {
         "X": GAME["UNIT_SIZE"],  # Do not change
         "Y": GAME["UNIT_SIZE"]  # Do not change
     },  # Starting position. Starting in the middle of the entrance area
-    "SPEED": GAME["UNIT_SIZE"]  # Temporary measure for the collision handler to work  # Do not change
+    "SPEED": GAME["UNIT_SIZE"],  # Temporary measure for the collision handler to work  # Do not change
+    "IS_RENDERED": True  # Do not change
 }
 
 COLORS = {
