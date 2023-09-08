@@ -26,7 +26,7 @@ This is a simple maze game made with python. You are playing as a red character 
 - Player speed is now tied up to the unit size. That's a temporary measure made for the collision handler to work
 ### #0.0.4.1 beta
 - Minor code maintenance
-- !NERD WARNING! `__global_data__.GAME["BOUNDS"]` will never be a list[int] again. The FOV and/or view radius though are going to be added soon:tm:
+- !NERD WARNING! `__global_data__.GAME["BOUNDS"]` will never be a list[int] again. FOV and/or view radius though are going to be added soon:tm:
 - Added a proper congratulation for beating the maze
 - Commented the `__global_data__` file as it's used as game configuration file. You can now change some variables here
 ### #0.0.4.2 beta
@@ -44,8 +44,8 @@ This is a simple maze game made with python. You are playing as a red character 
 - Made it so if you are trapped, you can just press [+] to get back to main menu
 
 ## Features to be added:
-- Main menu buttons will be debugged soon:tm:
-- FOV or view radius will be added back soon:tm: (removed in #0.0.3 beta)
+- Buttons are a bit bugged and will be reworked soon:tm: (message from #0.0.5 beta changelog)
+- FOV and/or view radius though are going to be added soon:tm: (removed in #0.0.3 beta, message from #0.0.4.1 beta changelog)
 
 ## Credits:
 - [@xsafter](https://github.com/xsafter) - Creating the [map generator algorithm](https://github.com/xsafter/map-generator) used in this game
