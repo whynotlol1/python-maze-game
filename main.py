@@ -27,6 +27,8 @@ def collision_handler(game_map: list[list[int]], x_pos: int, y_pos: int, checkin
 def main():
     # Initialising pygame
     pygame.init()
+    pygame.font.init()
+    my_font = pygame.font.SysFont('Roboto', 50)
     screen = pygame.display.set_mode((__global_data__.GAME["BOUNDS"], __global_data__.GAME["BOUNDS"]))
     pygame.display.set_caption(f"Maze game v{__global_data__.GAME['VERSION']}")
     clock = pygame.time.Clock()
@@ -66,6 +68,9 @@ def main():
             game_surface[exit_x][exit_y * __global_data__.GAME["UNIT_SIZE"]] = 3
             game_surface[exit_x][exit_y * __global_data__.GAME["UNIT_SIZE"] - __global_data__.GAME["UNIT_SIZE"]] = 3
 
+    # Variable for rendering the congratulation text
+    render_congratulation = False
+
     while __global_data__.GAME["IS_RUNNING"]:
         clock.tick(__global_data__.GAME["GAME_SPEED"])
         # Rendering
@@ -84,10 +89,10 @@ def main():
                         pygame.draw.rect(screen, __global_data__.COLORS["YELLOW"], (x_pos, y_pos, x_pos + __global_data__.GAME["UNIT_SIZE"], y_pos + __global_data__.GAME["UNIT_SIZE"]))
                     case 3:
                         pygame.draw.rect(screen, __global_data__.COLORS["YELLOW"], (x_pos, y_pos, x_pos + __global_data__.GAME["UNIT_SIZE"], y_pos + __global_data__.GAME["UNIT_SIZE"]))
-        # Rendering the player
-        pygame.draw.circle(screen, __global_data__.COLORS["RED"], (__global_data__.PLAYER["POSITION"]["X"] + __global_data__.GAME["UNIT_SIZE"] / 2, __global_data__.PLAYER["POSITION"]["Y"] + __global_data__.GAME["UNIT_SIZE"] / 2), int(__global_data__.GAME["UNIT_SIZE"] / 3))
 
-        pygame.display.update()
+        # Rendering the player
+        if __global_data__.PLAYER["IS_RENDERED"]:
+            pygame.draw.circle(screen, __global_data__.COLORS["RED"], (__global_data__.PLAYER["POSITION"]["X"] + __global_data__.GAME["UNIT_SIZE"] / 2, __global_data__.PLAYER["POSITION"]["Y"] + __global_data__.GAME["UNIT_SIZE"] / 2), int(__global_data__.GAME["UNIT_SIZE"] / 3))
 
         # Controls
         KEYS = pygame.key.get_pressed()
@@ -97,11 +102,8 @@ def main():
             new_y = __global_data__.PLAYER["POSITION"]["Y"] - __global_data__.PLAYER["SPEED"]
             if not collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="wall"):
                 if collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="exit"):
-                    print("=" * 100)
-                    print("You've successfully beaten the maze. A proper congratulation will be added soon.")
-                    print("=" * 100)
-                    pygame.quit()
-                    __global_data__.GAME["IS_RUNNING"] = False
+                    __global_data__.PLAYER["IS_RENDERED"] = False
+                    render_congratulation = True
                 else:
                     __global_data__.PLAYER["POSITION"]["Y"] -= __global_data__.PLAYER["SPEED"]
 
@@ -110,11 +112,8 @@ def main():
             new_y = __global_data__.PLAYER["POSITION"]["Y"] + __global_data__.PLAYER["SPEED"]
             if not collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="wall"):
                 if collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="exit"):
-                    print("=" * 100)
-                    print("You've successfully beaten the maze. A proper congratulation will be added soon.")
-                    print("=" * 100)
-                    pygame.quit()
-                    __global_data__.GAME["IS_RUNNING"] = False
+                    __global_data__.PLAYER["IS_RENDERED"] = False
+                    render_congratulation = True
                 else:
                     __global_data__.PLAYER["POSITION"]["Y"] += __global_data__.PLAYER["SPEED"]
 
@@ -123,11 +122,8 @@ def main():
             new_y = __global_data__.PLAYER["POSITION"]["Y"]
             if not collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="wall"):
                 if collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="exit"):
-                    print("=" * 100)
-                    print("You've successfully beaten the maze. A proper congratulation will be added soon.")
-                    print("=" * 100)
-                    pygame.quit()
-                    __global_data__.GAME["IS_RUNNING"] = False
+                    __global_data__.PLAYER["IS_RENDERED"] = False
+                    render_congratulation = True
                 else:
                     __global_data__.PLAYER["POSITION"]["X"] -= __global_data__.PLAYER["SPEED"]
 
@@ -136,25 +132,33 @@ def main():
             new_y = __global_data__.PLAYER["POSITION"]["Y"]
             if not collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="wall"):
                 if collision_handler(game_map=game_surface, x_pos=new_x, y_pos=new_y, checking_code="exit"):
-                    print("=" * 100)
-                    print("You've successfully beaten the maze. A proper congratulation will be added soon.")
-                    print("=" * 100)
-                    pygame.quit()
-                    __global_data__.GAME["IS_RUNNING"] = False
+                    __global_data__.PLAYER["IS_RENDERED"] = False
+                    render_congratulation = True
                 else:
                     __global_data__.PLAYER["POSITION"]["X"] += __global_data__.PLAYER["SPEED"]
 
         elif KEYS[pygame.K_ESCAPE]:  # Quitting if [ESC] is pressed
             pygame.quit()
             __global_data__.GAME["IS_RUNNING"] = False
-            
+
         try:
             for event in pygame.event.get():  # Quitting if X is pressed
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     __global_data__.GAME["IS_RUNNING"] = False
-        except pygame.error:  # Basically not printing out an error after you win 
+        except pygame.error:  # Basically not printing out an error after you win
             pass
+
+        # Rendering the congratulation text
+        if render_congratulation:
+            screen.fill(__global_data__.COLORS["BLACK"])
+            text = my_font.render("Congratulations on beating the maze!", False, __global_data__.COLORS["WHITE"])
+            x_pos = __global_data__.GAME["UNIT_SIZE"]
+            y_pos = ((__global_data__.GAME["BOUNDS"] / __global_data__.GAME["UNIT_SIZE"]) / 2) * __global_data__.GAME["UNIT_SIZE"]
+            screen.blit(text, (x_pos, y_pos))
+
+        # Screen updates
+        pygame.display.update()
 
 
 if __name__ == "__main__":
