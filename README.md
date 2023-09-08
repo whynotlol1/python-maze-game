@@ -31,6 +31,8 @@ This is a simple maze game made with python. You are playing as a red character 
 - Commented the `__global_data__` file as it's used as game configuration file. You can now change some variables here
 ### #0.0.4.2 beta
 - Minor code maintenance
+### #0.0.4.3 beta
+- Minor code maintenance
 
 ## Credits:
 - [@xsafter](https://github.com/xsafter) - Creating the [map generator algorithm](https://github.com/xsafter/map-generator) used in this game
