@@ -2,39 +2,40 @@
 # Feel free to use some parts of this code in your project
 
 from collections import deque
+import __global_data__
 import random
 
 
 def make_grid(width, height):
     new_grid = [[0 for _ in range(height)] for _ in range(width)]
-    for i in range(len(new_grid)):
-        for j in range(len(new_grid[i])):
-            if i == 0 or j == 0 or i == len(new_grid) - 1 or j == len(new_grid[0]) - 1:
-                new_grid[i][j] = 1
+    for i_ in range(len(new_grid)):
+        for j in range(len(new_grid[i_])):
+            if i_ == 0 or j == 0 or i_ == len(new_grid) - 1 or j == len(new_grid[0]) - 1:
+                new_grid[i_][j] = 1
     return new_grid
 
 
 def populate_grid(grid, chance):
-    for i in range(len(grid)):
+    for i__ in range(len(grid)):
         for j in range(len(grid[0])):
-            if random.randint(0, 100) <= chance: 
-                grid[i][j] = 1
+            if random.randint(0, 100) <= chance:
+                grid[i__][j] = 1
     return grid
 
 
 def automata_iteration(grid, min_count, make_pillars):
     new_grid = [row[:] for row in grid]
-    for i in range(1, len(grid) - 1):
+    for i___ in range(1, len(grid) - 1):
         for j in range(1, len(grid[0]) - 1):
             count = 0
             for k in range(-1, 2):
                 for l in range(-1, 2):
-                    if grid[i + k][j + l] == 1:
+                    if grid[i___ + k][j + l] == 1:
                         count += 1
             if count >= min_count or (count == 0 and make_pillars == 1):
-                new_grid[i][j] = 1
+                new_grid[i___][j] = 1
             else:
-                new_grid[i][j] = 0
+                new_grid[i___][j] = 0
     return new_grid
 
 
@@ -81,9 +82,46 @@ def generate(width: int, height: int, iterations: int):
 
     grid = populate_grid(grid, chance)
 
-    for i in range(iterations):
+    for _ in range(iterations):
         grid = automata_iteration(grid, count, 0)
 
     grid = flood_find_empty(grid, floodTries, goalPercentage)
 
     return grid
+
+
+# Generating the map
+game_surface = generate(width=__global_data__.GAME["BOUNDS"], height=__global_data__.GAME["BOUNDS"], iterations=1)
+# Drawing the 2 remaining borders (as the originally generated borders are out of reach for the rendering algorithm)
+# Bottom border
+game_surface[__global_data__.GAME["BOUNDS"] - __global_data__.GAME["UNIT_SIZE"]] = [1 for _ in range(__global_data__.GAME["BOUNDS"])]
+# Right border
+for i in range(0, __global_data__.GAME["BOUNDS"], __global_data__.GAME["UNIT_SIZE"]):
+    game_surface[i][__global_data__.GAME["BOUNDS"] - __global_data__.GAME["UNIT_SIZE"]] = 1
+# Generating entrance and exit points
+# Entrance
+for i in range(3):
+    game_surface[i * __global_data__.GAME["UNIT_SIZE"]][i * __global_data__.GAME["UNIT_SIZE"]] = 2
+    game_surface[0][i * __global_data__.GAME["UNIT_SIZE"]] = 2
+    game_surface[i * __global_data__.GAME["UNIT_SIZE"]][0] = 2
+game_surface[__global_data__.GAME["UNIT_SIZE"]][2 * __global_data__.GAME["UNIT_SIZE"]] = 2
+game_surface[2 * __global_data__.GAME["UNIT_SIZE"]][__global_data__.GAME["UNIT_SIZE"]] = 2
+# Exit
+exit_side = random.choice(["right", "bottom"])  # Choosing the side for the exit to generate on
+match exit_side:
+    case "bottom":
+        # Bottom border
+        exit_y = __global_data__.GAME["BOUNDS"] - __global_data__.GAME["UNIT_SIZE"]
+        # Inbetween the middle of the border and the corner
+        exit_x = random.randint(int((__global_data__.GAME["BOUNDS"] / __global_data__.GAME["UNIT_SIZE"] / 2)), int(__global_data__.GAME["BOUNDS"] / __global_data__.GAME["UNIT_SIZE"]) - 1)
+        game_surface[exit_x * __global_data__.GAME["UNIT_SIZE"] + __global_data__.GAME["UNIT_SIZE"]][exit_y] = 3
+        game_surface[exit_x * __global_data__.GAME["UNIT_SIZE"]][exit_y] = 3
+        game_surface[exit_x * __global_data__.GAME["UNIT_SIZE"] - __global_data__.GAME["UNIT_SIZE"]][exit_y] = 3
+    case "right":
+        # Right border
+        exit_x = __global_data__.GAME["BOUNDS"] - __global_data__.GAME["UNIT_SIZE"]
+        # Inbetween the middle of the border and the corner
+        exit_y = random.randint(int((__global_data__.GAME["BOUNDS"] / __global_data__.GAME["UNIT_SIZE"] / 2)), int(__global_data__.GAME["BOUNDS"] / __global_data__.GAME["UNIT_SIZE"]) - 1)
+        game_surface[exit_x][exit_y * __global_data__.GAME["UNIT_SIZE"] + __global_data__.GAME["UNIT_SIZE"]] = 3
+        game_surface[exit_x][exit_y * __global_data__.GAME["UNIT_SIZE"]] = 3
+        game_surface[exit_x][exit_y * __global_data__.GAME["UNIT_SIZE"] - __global_data__.GAME["UNIT_SIZE"]] = 3
