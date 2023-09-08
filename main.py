@@ -1,8 +1,8 @@
 # Feel free to use some parts of this code in your project
 
+from map_generation import game_surface
+from __game_initialization__ import *
 import __global_data__
-import map_generation
-import random
 import pygame
 
 
@@ -25,49 +25,6 @@ def collision_handler(game_map: list[list[int]], x_pos: int, y_pos: int, checkin
 
 
 def main():
-    # Initialising pygame
-    pygame.init()
-    pygame.font.init()
-    my_font = pygame.font.SysFont('Roboto', 50)
-    screen = pygame.display.set_mode((__global_data__.GAME["BOUNDS"], __global_data__.GAME["BOUNDS"]))
-    pygame.display.set_caption(f"Maze game v{__global_data__.GAME['VERSION']}")
-    clock = pygame.time.Clock()
-    # Generating the map
-    game_surface = map_generation.generate(width=__global_data__.GAME["BOUNDS"], height=__global_data__.GAME["BOUNDS"], iterations=1)
-    # Drawing the 2 remaining borders (as the originally generated borders are out of reach for the rendering algorithm)
-    # Bottom border
-    game_surface[__global_data__.GAME["BOUNDS"] - __global_data__.GAME["UNIT_SIZE"]] = [1 for _ in range(__global_data__.GAME["BOUNDS"])]
-    # Right border
-    for i in range(0, __global_data__.GAME["BOUNDS"], __global_data__.GAME["UNIT_SIZE"]):
-        game_surface[i][__global_data__.GAME["BOUNDS"] - __global_data__.GAME["UNIT_SIZE"]] = 1
-    # Generating entrance and exit points
-    # Entrance
-    for i in range(3):
-        game_surface[i * __global_data__.GAME["UNIT_SIZE"]][i * __global_data__.GAME["UNIT_SIZE"]] = 2
-        game_surface[0][i * __global_data__.GAME["UNIT_SIZE"]] = 2
-        game_surface[i * __global_data__.GAME["UNIT_SIZE"]][0] = 2
-    game_surface[__global_data__.GAME["UNIT_SIZE"]][2 * __global_data__.GAME["UNIT_SIZE"]] = 2
-    game_surface[2 * __global_data__.GAME["UNIT_SIZE"]][__global_data__.GAME["UNIT_SIZE"]] = 2
-    # Exit
-    exit_side = random.choice(["right", "bottom"])  # Choosing the side for the exit to generate on
-    match exit_side:
-        case "bottom":
-            # Bottom border
-            exit_y = __global_data__.GAME["BOUNDS"] - __global_data__.GAME["UNIT_SIZE"]
-            # Inbetween the middle of the border and the corner
-            exit_x = random.randint(int((__global_data__.GAME["BOUNDS"] / __global_data__.GAME["UNIT_SIZE"] / 2)), int(__global_data__.GAME["BOUNDS"] / __global_data__.GAME["UNIT_SIZE"]) - 1)
-            game_surface[exit_x * __global_data__.GAME["UNIT_SIZE"] + __global_data__.GAME["UNIT_SIZE"]][exit_y] = 3
-            game_surface[exit_x * __global_data__.GAME["UNIT_SIZE"]][exit_y] = 3
-            game_surface[exit_x * __global_data__.GAME["UNIT_SIZE"] - __global_data__.GAME["UNIT_SIZE"]][exit_y] = 3
-        case "right":
-            # Right border
-            exit_x = __global_data__.GAME["BOUNDS"] - __global_data__.GAME["UNIT_SIZE"]
-            # Inbetween the middle of the border and the corner
-            exit_y = random.randint(int((__global_data__.GAME["BOUNDS"] / __global_data__.GAME["UNIT_SIZE"] / 2)), int(__global_data__.GAME["BOUNDS"] / __global_data__.GAME["UNIT_SIZE"]) - 1)
-            game_surface[exit_x][exit_y * __global_data__.GAME["UNIT_SIZE"] + __global_data__.GAME["UNIT_SIZE"]] = 3
-            game_surface[exit_x][exit_y * __global_data__.GAME["UNIT_SIZE"]] = 3
-            game_surface[exit_x][exit_y * __global_data__.GAME["UNIT_SIZE"] - __global_data__.GAME["UNIT_SIZE"]] = 3
-
     # Variable for rendering the congratulation text
     render_congratulation = False
 
