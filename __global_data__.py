@@ -21,8 +21,8 @@ PLAYER = {
 }
 
 COLORS = {
-    "BLACK": (0, 0, 0),  # Only change if you know what you are doing
-    "WHITE": (255, 255, 255),  # Only change if you know what you are doing
-    "YELLOW": (204, 204, 0),  # Only change if you know what you are doing
-    "RED": (250, 50, 0)  # Only change if you know what you are doing
+    "BLACK": (0, 0, 0),  # Do not change
+    "WHITE": (255, 255, 255),  # Do not change
+    "YELLOW": (204, 204, 0),  # Do not change
+    "RED": (250, 50, 0)  # Do not change
 }
