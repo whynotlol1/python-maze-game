@@ -1,12 +1,12 @@
 # Feel free to use some parts of this code in your project
 
 # This is basically a configuration file.
-# You can change some values here
+# Please, do not change anything in this file
 
 GAME = {
-    "BOUNDS": 700,  # Keep an integer number
-    "UNIT_SIZE": 20,  # Keep an integer number less than BOUNDS
-    "GAME_SPEED": 20,  # Keep an integer number
+    "BOUNDS": 700,  # Do not change
+    "UNIT_SIZE": 20,  # Do not change
+    "GAME_SPEED": 20,  # Do not change
     "VERSION": "#0.0.5.1 beta",  # Do not change
     "IS_RUNNING": True,  # Do not change
     "LEVEL": "MAIN-MENU"  # Do not change
