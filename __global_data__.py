@@ -7,8 +7,9 @@ GAME = {
     "BOUNDS": 700,  # Keep an integer number
     "UNIT_SIZE": 20,  # Keep an integer number less than BOUNDS
     "GAME_SPEED": 20,  # Keep an integer number
-    "VERSION": "#0.0.4.1 beta",  # Do not change
-    "IS_RUNNING": True  # Do not change
+    "VERSION": "#0.0.4.2 beta",  # Do not change
+    "IS_RUNNING": True,  # Do not change
+    "LEVEL": "MAIN-MENU"  # Not used yet. Is needed for the #0.0.5 beta update # Do not change
 }
 
 PLAYER = {
