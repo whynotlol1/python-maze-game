@@ -7,19 +7,16 @@ import pygame
 
 
 def collision_handler(game_map: list[list[int]], x_pos: int, y_pos: int, checking_code: str) -> bool or str:
-    match checking_code:
-        case "wall":
-            # Checking if the given point (x, y) is not a wall. Returns True if you cannot move there.
-            try:
+    try:
+        match checking_code:
+            case "wall":
+                # Checking if the given point (x, y) is not a wall. Returning True if you cannot move there.
                 return game_map[x_pos][y_pos] == 1
-            except IndexError:  # Still returning a collision even if the index is somehow out of range
-                return True
-        case "exit":
-            # Checking if the given point (x, y) is an exit. Returns True if it's an exit
-            try:
+            case "exit":
+                # Checking if the given point (x, y) is an exit. Returning True if it's an exit
                 return game_map[x_pos][y_pos] == 3
-            except IndexError:  # Still returning a collision even if the index is somehow out of range
-                return True
+    except IndexError:  # Still returning a collision even if the index is somehow out of range
+        return True
     # Returning an exception if something goes wrong
     return "CollisionHandlerException: Unknown error occurred"
 
@@ -163,7 +160,7 @@ def main():
             if pygame.key.get_pressed()[pygame.K_ESCAPE]:  # Quitting if [ESC] is pressed
                 pygame.quit()
                 __global_data__.GAME["IS_RUNNING"] = False
-            elif pygame.key.get_pressed()[pygame.K_EQUALS]:  # If you are trapped
+            elif pygame.key.get_pressed()[pygame.K_EQUALS]:  # If you`re trapped
                 __global_data__.GAME["LEVEL"] = "MAIN-MENU"
 
             # Screen updates
