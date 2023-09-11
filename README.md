@@ -48,7 +48,7 @@ This is a simple maze game made with python. You are playing as a red character 
 - Reworked the buttons
 - Made the code much more readable.
 - Reworked the project structure
-_ "Try again" button is now "Retry". It is still not working correctly though
+_ "Try again" button is now "Retry". It's still not working correctly though
 
 ## Features to be added:
 - Player speed is now tied up to the unit size. That's a temporary measure made for the collision handler to work (message from #0.0.4 beta changelog)
