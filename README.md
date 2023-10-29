@@ -1,4 +1,4 @@
-# python-maze-game
+# python-maze-game [MAY BE BUGGED & UNPLAYABLE]
 
 ## Descryption
 This is a simple maze game made with python. You are playing as a red character in a black and white maze. Your task is to find the exit.
